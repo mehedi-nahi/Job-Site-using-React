@@ -9,31 +9,27 @@ function JobListings ({ isHome = false })  {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect( () => {
+  useEffect(() => {
     const fetchJobs = async () => {
-      const apiUrl= isHome ? 
-      '/api/jobs?_page=1&_per_page=3' 
-      : '/api/jobs';
-  
+      const apiUrl = isHome ? "/api/jobs?_page=1&_per_page=3" : "/api/jobs";
+
       try {
-      const res = await fetch (apiUrl);
-      const data = await res.json();
-      // console.log(data)
-      if (isHome) {
-    setJobs(data.data); 
-  } else {
-    setJobs(data);      
-  }
-}
-      catch(error){
-        console.log('Error fetching data', error);
-      }
-      finally{
+        const res = await fetch(apiUrl);
+        const data = await res.json();
+        // console.log(data)
+        if (isHome) {
+          setJobs(data.data);
+        } else {
+          setJobs(data);
+        }
+      } catch (error) {
+        console.log("Error fetching data", error);
+      } finally {
         setLoading(false);
-      }  
-    }
-  fetchJobs();
-}, []);
+      }
+    };
+    fetchJobs();
+  }, []);
  
   return (
     <section className="bg-blue-50 px-4 py-10">

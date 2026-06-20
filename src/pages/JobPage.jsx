@@ -8,7 +8,7 @@ import { toast} from 'react-toastify' ;
 const JobPage = ({deleteJob}) => {
   const navigate =useNavigate();
   const {id} = useParams();
-  const job = useLoaderData();
+  const job = useLoaderData(); 
   
   const onDeleteClick=(jobId)=>{
     const confirm =window.confirm('Are you sure you want to delete this listing?')
